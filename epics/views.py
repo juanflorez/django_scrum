@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 # Create your views here.
+from .models import Epic
 
 
 def epic_create(request=None):
@@ -16,10 +17,11 @@ def epic_detail(request=None):
 
 def epic_list(request=None):
 
-	context = {
-	    "header": "This is the list header"
+    queryset = Epic.objects.all()
+    context = {
+	    "object_list": queryset
 	}
-	return render(request, "index.html",{})
+    return render(request, "index.html", context)
 
 
 def epic_edit(request=None):
