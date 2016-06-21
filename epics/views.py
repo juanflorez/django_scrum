@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
 # Create your views here.
@@ -19,14 +19,23 @@ def epic_list(request=None):
 
     queryset = Epic.objects.all()
     context = {
-	    "object_list": queryset
+	    "epics_list": queryset
 	}
-    return render(request, "index.html", context)
+    return render(request, "Epics_list.html", context)
 
 
 def epic_edit(request=None):
 
 	return HttpResponse("<h1> Change the Epic here!! </h1>")
+
+def epic_detail(request=None, slug=None):
+    
+    instance = get_object_or_404(Epic, slug=slug) 
+    context = {
+      "title": instance.title,
+
+    }
+    return render(request, "Epic_read_detail.html", context)
 
 
 def epic_delete(request=None):

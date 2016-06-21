@@ -8,6 +8,7 @@ class Epic(models.Model):
     title = models.CharField(max_length=120)
     content = models.TextField()
     points = models.IntegerField()
+    slug = models.SlugField(unique=True)
 
     def __str__(self):
     	return self.title
