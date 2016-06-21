@@ -16,7 +16,9 @@ def epic_detail(request=None):
 
 def epic_list(request=None):
 
-	#return HttpResponse("<h1> The list of Epics!! </h1>")
+	context = {
+	    "header": "This is the list header"
+	}
 	return render(request, "index.html",{})
 
 
