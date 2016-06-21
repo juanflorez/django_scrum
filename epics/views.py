@@ -16,7 +16,8 @@ def epic_detail(request=None):
 
 def epic_list(request=None):
 
-	return HttpResponse("<h1> The list of Epics!! </h1>")
+	#return HttpResponse("<h1> The list of Epics!! </h1>")
+	return render(request, "index.html",{})
 
 
 def epic_edit(request=None):
