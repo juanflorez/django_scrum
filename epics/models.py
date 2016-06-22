@@ -19,5 +19,5 @@ class Epic(models.Model):
 
 
     def get_absolute_url(self):
-    	return reverse("detail", kwargs={"id": self.id})
+    	return reverse("epics:detail", kwargs={"id": self.id})
         
