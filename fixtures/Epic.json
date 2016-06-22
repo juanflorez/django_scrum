@@ -1,0 +1,18 @@
+[
+  {
+    "model": "epics.Epic",
+    "fields": {
+      "title": "Epic Fixture 1",
+      "content": "Bla ble ble ble",
+      "points": "3"
+    }
+  },
+  {
+    "model": "epics.Epic",
+    "fields": {
+      "title": "Epic Fixture 2",
+      "content": "Ble ble ble ble",
+      "points": "5"
+    }
+  }
+]
