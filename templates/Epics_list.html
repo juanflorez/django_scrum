@@ -33,7 +33,8 @@
 {% for obj in epics_list %}
   
   <li class="ui-state-default">
-      <a href='{% url "detail" id=obj.id %}'> {{obj.title}} </a> </li>
+  
+      <a href='{{ obj.get_absolute_url }}'> {{obj.title}} </a> </li>
 
 {% endfor %}
 
