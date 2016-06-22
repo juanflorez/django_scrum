@@ -5,10 +5,10 @@ from django.db import models
 # Create your models here.
 
 class Epic(models.Model):
-    title = models.CharField(max_length=120)
-    content = models.TextField()
-    points = models.IntegerField()
-    slug = models.SlugField(unique=True)
+    title   =  models.CharField(max_length = 120)
+    content =  models.TextField()
+    points  =  models.IntegerField()
+    
 
     def __str__(self):
     	return self.title

@@ -10,11 +10,6 @@ def epic_create(request=None):
 	return HttpResponse("<h1> Creating Epic!! </h1>")
 
 
-def epic_detail(request=None):
-
-	return HttpResponse("<h1> Here is 1 Epic!! </h1>")
-
-
 def epic_list(request=None):
 
     queryset = Epic.objects.all()
@@ -28,11 +23,12 @@ def epic_edit(request=None):
 
 	return HttpResponse("<h1> Change the Epic here!! </h1>")
 
-def epic_detail(request=None, slug=None):
+def epic_detail(request, id):
     
-    instance = get_object_or_404(Epic, slug=slug) 
+    instance = get_object_or_404(Epic, id=id) 
     context = {
       "title": instance.title,
+      "content": instance.content,
 
     }
     return render(request, "Epic_read_detail.html", context)
