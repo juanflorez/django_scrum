@@ -17,6 +17,6 @@ urlpatterns = [
     url(r'^list/$',   epic_list),
     url(r'^edit/$',   epic_edit),
     url(r'^delete/$', epic_delete),
-    url(r'^detail/(?P<id>\d+)/$', epic_detail),
+    url(r'^detail/(?P<id>\d+)/$', epic_detail, name='detail'),
     
 ]
