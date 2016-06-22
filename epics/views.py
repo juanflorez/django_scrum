@@ -1,13 +1,18 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from .forms import EpicForm
+
 
 # Create your views here.
 from .models import Epic
 
 
 def epic_create(request=None):
-
-	return HttpResponse("<h1> Creating Epic!! </h1>")
+    form = EpicForm()
+    context = {
+        "form": form,
+    }
+    return render(request, "Epic_edit.html", context )
 
 
 def epic_list(request=None):
