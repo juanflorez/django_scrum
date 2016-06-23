@@ -7,8 +7,13 @@ from .forms import EpicForm
 from .models import Epic
 
 
-def epic_create(request=None):
-    form = EpicForm()
+def epic_create(request):
+    form = EpicForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+
+       
     context = {
         "form": form,
     }
@@ -34,6 +39,7 @@ def epic_detail(request, id):
     context = {
       "title": instance.title,
       "content": instance.content,
+      "points": instance.points,
 
     }
     return render(request, "Epic_read_detail.html", context)

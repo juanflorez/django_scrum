@@ -7,6 +7,7 @@ class EpicForm(forms.ModelForm):
         fields = [
             "title",
             "content",
+            "points",
 
         ]
     
