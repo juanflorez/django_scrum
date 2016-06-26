@@ -29,9 +29,20 @@ def epic_list(request=None):
     return render(request, "Epics_list.html", context)
 
 
-def epic_edit(request=None):
+def epic_edit(request, id):
 
-	return HttpResponse("<h1> Change the Epic here!! </h1>")
+    instance = get_object_or_404(Epic, id=id)
+    form     = EpicForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+    context  = {
+         "title": instance.title,
+         "instance": instance,
+         "form": form,
+
+    }
+    return render(request, "Epic_edit.html", context)
 
 def epic_detail(request, id):
     
