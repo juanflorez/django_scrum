@@ -1,5 +1,6 @@
 from django.test import Client
 from django.test import TestCase
+from django_webtest import WebTest
 from django.core.urlresolvers import reverse
 from models import Epic
 from forms import EpicForm
@@ -35,7 +36,7 @@ class EpicTest(TestCase):
     	frm = self.client.get("/epics/create/")
     	self.assertEqual(frm.status_code, 200)
 
-class EpicFormTest(TestCase):
+class EpicFormTest(WebTest):
 
     def setUp(self):
         self.epic = Epic.objects.create(
@@ -71,8 +72,10 @@ class EpicFormTest(TestCase):
     	self.assertEqual(form.errors, {
     		'title': ['This field is required.'],
     		'content': ['This field is required.'],
-    		'points': ['This field is required.'],
+    		'points': ['This field is required.'	],
     		})
+    
+    #def test_edit(self):
 
 
 
