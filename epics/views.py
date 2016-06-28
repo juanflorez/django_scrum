@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from .forms import EpicForm
@@ -62,6 +62,8 @@ def epic_detail(request, id):
     return render(request, "Epic_read_detail.html", context)
 
 
-def epic_delete(request=None):
-
-	return HttpResponse("<h1> The epic is gone!! </h1>")
+def epic_delete(request, id):
+    instance = get_object_or_404(Epic, id=id)
+    instance.delete()
+    messages.success(request, "The Epic was deleted", extra_tags=str(id))
+    return redirect("epics:list")
