@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import messages
 from .forms import EpicForm
 
 
@@ -12,7 +13,8 @@ def epic_create(request):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
-
+        messages.success(request, "The Epic was created")
+        return HttpResponseRedirect(instance.get_absolute_url())
        
     context = {
         "form": form,
@@ -36,13 +38,17 @@ def epic_edit(request, id):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
+        messages.success(request, "The epic was edited")
+        return HttpResponseRedirect(instance.get_absolute_url())    
     context  = {
          "title": instance.title,
          "instance": instance,
          "form": form,
 
     }
+    
     return render(request, "Epic_edit.html", context)
+    
 
 def epic_detail(request, id):
     

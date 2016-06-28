@@ -1,4 +1,12 @@
 <body>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
   <h1> Detailed EPIC </h1>
   <h2>{{title}}</h2>
   <div>{{content}}</div>
